@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: loadbalancer-sv
+  name: loadbalancer-svc
 spec:
   type: LoadBalancer
   selector:
-    app: hello
+    app: helloo
   ports:
     - name: http
       protocol: TCP
@@ -14,18 +14,18 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-        name: loadbalancer-po
+        name: loadbalancer-pod
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: hello
+      app: helloo
   template:
     metadata:
       labels:
-        app: hello 
+        app: helloo 
     spec:
       containers:
-        - name: hello
+        - name: helloo
           image: happygokul/newimage:latest
           imagePullPolicy: Always
